@@ -1,27 +1,36 @@
 package com.danica_intabella.step_definitions;
 
+import com.danica_intabella.pages.OroiDocPage;
+import com.danica_intabella.utilities.BrowserUtils;
+import com.danica_intabella.utilities.ConfigurationReader;
+import com.danica_intabella.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class US02_StepDefs {
 
-    @Given("the user login with {string},{string}")
-    public void the_user_login_with(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
-    @Then("User should be able to click on the question icon")
-    public void user_should_be_able_to_click_on_the_question_icon() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
+    OroiDocPage oroiDocPage = new OroiDocPage();
 
     @Then("User sees Oro Documentation page")
     public void user_sees_oro_documentation_page() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(oroiDocPage.questionIcon).click();
+        BrowserUtils.sleep(2);
+
+//        String expectedTitle = "Welcome to Oro Documentation";
+//        String actualTitle = Driver.getDriver().getTitle();
+//        Assert.assertEquals(expectedTitle,actualTitle);
+
     }
 
-
+    @Then("User click on the question icon")
+    public void userClickOnTheQuestionIcon() {
+        oroiDocPage.questionIcon.click();
+        BrowserUtils.sleep(3);
+    }
 }
