@@ -59,6 +59,7 @@ public class US05_StepDefs {
         public void userShouldSeeTheErrorMessage() {
        String expectedText ="You do not have permission to perform this action.";
         String actualText = vehicleModelPageAlison.errorMessage.getText();
+         System.out.println("expected text = "+ expectedText);
         System.out.println("actualText = " + actualText);
         BrowserUtils.waitForVisibility(vehicleModelPageAlison.errorMessage,10);
         Assert.assertEquals(expectedText,actualText);
@@ -68,14 +69,16 @@ public class US05_StepDefs {
 
     @Then("user should be able to see ten main module columns")
     public void userShouldBeAbleToSeeTenMainModuleColumns(List<String> expectedModules) {
+
         List<String> actualModules = new ArrayList<>();
         for (WebElement eachModule : vehicleModelPageAlison.webTable) {
             actualModules.add(eachModule.getText());
+            System.out.println("expectedModules = " + expectedModules);
+            System.out.println("actualModules = " + actualModules);
         }
-
+        BrowserUtils.sleep(3);
         Assert.assertEquals(expectedModules, actualModules);
     }
-
 
 
 
