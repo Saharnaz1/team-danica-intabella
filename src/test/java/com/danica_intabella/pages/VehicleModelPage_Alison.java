@@ -24,9 +24,13 @@ public class VehicleModelPage_Alison extends BasePage {
     public WebElement vehicleModelButton;
 
 
-    @FindBy(xpath="//a[@class='grid-header-cell__link']")
-    public List<WebElement> webTable;
-
+  // Sahar locator
+  // @FindBy(xpath = "//table[@class='grid table-hover table table-bordered table-condensed']//th")
+  @FindBy(xpath = "//a//span[@class='grid-header-cell__label']")
+     public List<WebElement> webTable;
+  // @FindBy(xpath="//span[@class='grid-header-cell__label']")
+  //  public List<WebElement> webTable;
+//Alison //a[@class='grid-header-cell__link']
 
     @FindBy(xpath ="//div[.='You do not have permission to perform this action.']")
     public WebElement errorMessage;

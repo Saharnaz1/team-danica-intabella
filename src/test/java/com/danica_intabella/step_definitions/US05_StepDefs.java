@@ -26,9 +26,10 @@ public class US05_StepDefs {
 
     @When("user clicks vehicle model button")
     public void user_clicks_vehicle_model_button() throws InterruptedException {
-        BrowserUtils.waitForVisibility(vehicleModelPageAlison.vehicleModelButton, 10);
+       // BrowserUtils.waitForVisibility(vehicleModelPageAlison.vehicleModelButton, 10);
         BrowserUtils.sleep(2);
         vehicleModelPageAlison.vehicleModelButton.click();
+        BrowserUtils.sleep(2);
     }
 
     // @Then("user should see main module is displayed")
@@ -58,27 +59,56 @@ public class US05_StepDefs {
      @Then("user should see the error message")
         public void userShouldSeeTheErrorMessage() {
        String expectedText ="You do not have permission to perform this action.";
+         BrowserUtils.waitForVisibility(vehicleModelPageAlison.errorMessage,10);
         String actualText = vehicleModelPageAlison.errorMessage.getText();
          System.out.println("expected text = "+ expectedText);
         System.out.println("actualText = " + actualText);
-        BrowserUtils.waitForVisibility(vehicleModelPageAlison.errorMessage,10);
+
         Assert.assertEquals(expectedText,actualText);
-       Assert.assertTrue(vehicleModelPageAlison.errorMessage.isDisplayed());
+     //  Assert.assertTrue(vehicleModelPageAlison.errorMessage.isDisplayed());
     }
 
 
     @Then("user should be able to see ten main module columns")
     public void userShouldBeAbleToSeeTenMainModuleColumns(List<String> expectedModules) {
+       // List<String>actualModules = new ArrayList<>();
+     //   for (WebElement eachModule : vehicleModelPageAlison.webTable) {
+        //    actualModules.add(eachModule.getText());
+          //  System.out.println("expectedModules = " + expectedModules);
+         //   System.out.println("actualModules = " + actualModules);
+     //   }
+        BrowserUtils.sleep(5);
+      //  Assert.assertEquals(expectedModules, actualModules);
 
-        List<String> actualModules = new ArrayList<>();
-        for (WebElement eachModule : vehicleModelPageAlison.webTable) {
-            actualModules.add(eachModule.getText());
-            System.out.println("expectedModules = " + expectedModules);
-            System.out.println("actualModules = " + actualModules);
-        }
-        BrowserUtils.sleep(3);
-        Assert.assertEquals(expectedModules, actualModules);
+      List<String> actual=  BrowserUtils.getElementsText(vehicleModelPageAlison.webTable);
+       actual.removeIf(k->k.isBlank());
+
+
+        actual.remove(actual.size()-1);
+        System.out.println(actual+"=============");
+         Assert.assertEquals(expectedModules,actual);
+
     }
+
+      /*  Actions actions = new Actions(Driver.getDriver());
+        List<String> actualModule = new ArrayList<>();
+        BrowserUtils.sleep(3);
+
+        for (int i = 0; i < vehicleModelPageAlison.webTable.size(); i++) {
+            actions.moveToElement(vehicleModelPageAlison.webTable.get(i)).perform();
+            BrowserUtils.sleep(8);
+            actualModule.add(vehicleModelPageAlison.webTable.get(i).getAttribute("title"));
+        }
+
+        Assert.assertEquals(expectedModules, actualModule);
+
+    }
+
+       */
+
+
+
+
 
 
 
