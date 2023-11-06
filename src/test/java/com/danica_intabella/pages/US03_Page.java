@@ -14,15 +14,15 @@ public class US03_Page extends BasePage {
      PageFactory.initElements(Driver.getDriver(),this);
  }
 
-    @FindBy(xpath = "//div[@class = 'pin-bar-empty']")
-    public static WebElement HowToUseThisSpace;
+    @FindBy(xpath = "//a[.='Learn how to use this space']")
+    public  WebElement HowToUseThisSpace;
 
     @FindBy(xpath = "//h3[text()='How To Use Pinbar']")
-    public static WebElement HowToUsePinbar;
+    public  WebElement HowToUsePinbar;
 
     @FindBy(xpath = "//i[@class = 'fa-thumb-tack hide-text']")
-    public static WebElement pinbar;
+    public  WebElement pinbar;
 
     @FindBy(xpath = "//img[@src = '/bundles/oronavigation/images/pinbar-location.jpg']")
-    public static WebElement Image;
+    public  WebElement Image;
 }
