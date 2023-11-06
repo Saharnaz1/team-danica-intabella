@@ -1,5 +1,6 @@
 package com.danica_intabella.runners;
 
+
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
@@ -15,7 +16,11 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/danica_intabella/step_definitions",
         dryRun = false,
+
+       tags = "@US03",
+
         tags ="@wip",
+
         publish = true //generating a report with public link
 )
 public class CukesRunner {}
